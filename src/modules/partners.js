@@ -37,7 +37,7 @@ const partners = () => {
     });
   };
 
-  fetch("https://delivery-food-v3-default-rtdb.firebaseio.com/db/partners.json")
+  fetch("./db/partners.json")
     .then((response) => response.json())
     .then((data) => {
       renderItems(data);
@@ -48,3 +48,5 @@ const partners = () => {
 };
 
 export default partners;
+
+// https://delivery-food-v3-default-rtdb.firebaseio.com/db/partners.json
