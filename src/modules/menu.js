@@ -10,6 +10,26 @@ const changeTitle = (restaurant) => {
   restaurantCategory.textContent = restaurant.kitchen;
 };
 
+const cartArray = localStorage.getItem("cart")
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
+
+const addToCart = (cartItem) => {
+  if (cartArray.some((item) => item.id === cartItem.id)) {
+    cartArray.map((item) => {
+      if (item.id === cartItem.id) {
+        item.count++;
+      }
+
+      return item;
+    });
+  } else {
+    cartArray.push(cartItem);
+  }
+  cartArray.push(cartItem);
+  localStorage.setItem("cart", JSON.stringify(cartArray));
+};
+
 const menu = () => {
   const renderItems = (data) => {
     data.forEach(({ description, id, image, name, price }) => {
@@ -37,6 +57,10 @@ const menu = () => {
           </div>
         </div>
       `;
+
+      card.querySelector(".button-card-text").addEventListener("click", () => {
+        addToCart({ name, price, count: 1 });
+      });
 
       cardsMenu.append(card);
     });

@@ -7,11 +7,13 @@ const auth = () => {
   const logInForm = document.getElementById("logInForm");
   const inputLogin = document.getElementById("login");
   const inputPassword = document.getElementById("password");
+  const buttonCart = document.querySelector(".button-cart");
 
   const login = (user) => {
     buttonAuth.style.display = "none";
     buttonOut.style.display = "flex";
     userName.style.display = "flex";
+    buttonCart.style.display = "flex";
 
     userName.textContent = user.login;
     modalAuth.style.display = "none";
@@ -21,7 +23,9 @@ const auth = () => {
     buttonAuth.style.display = "flex";
     buttonOut.style.display = "none";
     userName.style.display = "none";
+
     userName.textContent = "";
+    buttonCart.style.display = "none";
 
     localStorage.removeItem("user");
   };
@@ -55,4 +59,4 @@ const auth = () => {
   }
 };
 
-export default auth
+export default auth;
